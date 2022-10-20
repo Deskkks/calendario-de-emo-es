@@ -1,0 +1,123 @@
+div#check {
+    display: grid;
+    grid-template-columns: 20px 20px 20px 20px 20px 20px 20px;
+}
+
+.conteiner_check {
+    cursor: pointer;
+    user-select: none;
+}
+
+input[type=checkbox] {
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+span.checkmark {
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    background-color: aqua;
+}
+
+/*-------------------------------------------*/
+
+span#podre {
+    background-color: rgba(0, 0, 0, 0.500);
+}
+
+.conteiner_check:hover input ~ #podre {
+    background-color: rgba(0, 0, 0, 0.700);
+}
+
+.conteiner_check input:checked ~ #podre {
+    background-color: black;
+}
+
+/*-------------------------------------------*/
+
+span#pessimo {
+    background-color: rgba(139, 0, 0, 0.500);
+}
+
+.conteiner_check:hover input ~ #pessimo {
+    background-color: rgba(139, 0, 0, 0.700);
+}
+
+.conteiner_check input:checked ~ #pessimo {
+    background-color: rgba(139, 0, 0, 1);
+}
+
+/*-------------------------------------------*/
+
+span#ruim {
+    background-color: rgba(255, 136, 0, 0.5);
+}
+
+.conteiner_check:hover input ~ #ruim {
+    background-color: rgba(255, 136, 0, 0.700);
+}
+
+.conteiner_check input:checked ~ #ruim {
+    background-color: rgb(255, 136, 0);
+}
+
+/*-------------------------------------------*/
+
+span#mediano {
+    background-color: rgba(225, 255, 0, 0.5);
+}
+
+.conteiner_check:hover input ~ #mediano {
+    background-color: rgba(255, 255, 0, 0.700);
+}
+
+.conteiner_check input:checked ~ #mediano {
+    background-color: rgb(255, 255, 0);
+}
+
+/*-------------------------------------------*/
+
+span#bom {
+    background-color: rgba(85, 255, 0, 0.5);
+}
+
+.conteiner_check:hover input ~ #bom {
+    background-color: rgba(85, 255, 0, 0.700);
+}
+
+.conteiner_check input:checked ~ #bom {
+    background-color: rgb(85, 255, 0);
+}
+
+/*-------------------------------------------*/
+
+span#incrivel {
+    background-color: rgba(0, 98, 255, 0.5);
+}
+
+.conteiner_check:hover input ~ #incrivel {
+    background-color: rgba(0, 98, 255, 0.700);
+}
+
+.conteiner_check input:checked ~ #incrivel {
+    background-color: rgb(0, 98, 255);
+}
+
+/*-------------------------------------------*/
+
+span#perfeito {
+    background-color: rgba(255, 0, 153, 0.5);
+}
+
+.conteiner_check:hover input ~ #perfeito {
+    background-color: rgba(255, 0, 153, 0.700);
+}
+
+.conteiner_check input:checked ~ #perfeito {
+    background-color: rgb(255, 0, 153);
+}
+
+/*-------------------------------------------*/
