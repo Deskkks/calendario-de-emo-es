@@ -1,3 +1,11 @@
+:root{
+    --cor1: #6B26FF;
+    --cor2: #6B26FF;
+    --cor3: #1729E8;
+    --cor4: #FF24C8;
+    --cor5: #1988FF;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -10,15 +18,16 @@ html, body {
 }
 
 body {
-    background-color: #FFC600;
+    background-color: var(--cor2);
 }
 
 header {
-    background-color: #FF9900;
-    color: #F9BE65;
-    text-shadow: 2px 2px 0px #9C681B;
+    background-color: var(--cor5);
+    color: var(--cor);
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.456);
     text-align: center;
     padding: 40px;
+    box-shadow: 0px 1px 3px var(--cor5);
 }
 
 main {
@@ -36,16 +45,22 @@ div#calendario {
     height: 400px;
     margin: 10px;
     background-color: white;
+    border: 3px solid var(--cor4);
+    border-radius: 5px;
 }
 
 div#descricao {
     background-color: white;
     margin: 10px;
+    border: 3px solid var(--cor4);
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 div#contcheck {
     width: 140px;
     margin: 5px auto 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.400);
 }
 
 textarea{
