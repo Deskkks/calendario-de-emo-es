@@ -1,6 +1,6 @@
 div#check {
     display: grid;
-    grid-template-columns: 20px 20px 20px 20px 20px 20px 20px;
+    grid-template-columns: repeat(7,35px);
 }
 
 .conteiner_check {
@@ -8,7 +8,7 @@ div#check {
     user-select: none;
 }
 
-input[type=checkbox] {
+input[type=radio] {
     opacity: 0;
     cursor: pointer;
     height: 0;
@@ -17,9 +17,8 @@ input[type=checkbox] {
 
 span.checkmark {
     display: inline-block;
-    height: 15px;
-    width: 15px;
-    background-color: aqua;
+    height: 30px;
+    width: 30px;
 }
 
 /*-------------------------------------------*/
