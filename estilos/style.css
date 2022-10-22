@@ -90,7 +90,7 @@ div#contDescricao {
 div#descricao {
     height: 100%;
     width: 90%;
-    margin: auto;
+    margin: 20px auto;
 }
 
 div#contcheck {
@@ -107,7 +107,7 @@ div#contText {
 
 textarea{
     padding: 10px;
-    height: 90%;
+    height: 88%;
     width: 100%;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-radius: 3px;
