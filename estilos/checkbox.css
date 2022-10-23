@@ -24,15 +24,15 @@ span.checkmark {
 /*-------------------------------------------*/
 
 span#podre {
-    background-color: rgba(0, 0, 0, 0.500);
+    background-color: #00000080;
 }
 
 .conteiner_check:hover input ~ #podre {
-    background-color: rgba(0, 0, 0, 0.700);
+    background-color: #000000b3;
 }
 
 .conteiner_check input:checked ~ #podre {
-    background-color: black;
+    background-color: #000000;
 }
 
 /*-------------------------------------------*/
@@ -47,6 +47,7 @@ span#pessimo {
 
 .conteiner_check input:checked ~ #pessimo {
     background-color: rgba(139, 0, 0, 1);
+    color: rgba(139, 0, 0, 1);
 }
 
 /*-------------------------------------------*/
