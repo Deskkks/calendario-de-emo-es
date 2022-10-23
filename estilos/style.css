@@ -50,30 +50,32 @@ div#calendario {
     text-align: center;
 }
 
+#head {
+    margin: 20px 0;
+    font-size: 1.5em;
+}
+
 #dia-da-semana, #dias {
     display: grid;
     grid-template-columns: repeat(7,1fr);
-    margin: 10px;
+    margin: 0 10px;
 }
 
-#mes {
-    margin: 20px 0;
-    font-size: 1.5em;
+#dia-da-semana > div {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    height: 30px;
 }
 
 #dias > div {
     width: 82px;
     height: 72px;
-}
-
-#dias > div {
     text-align: left;
     font-size: 1em;
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
-#dias > div:first-child{
-    grid-column: 7;
+.outroMes {
+    color: rgba(0, 0, 0, 0.5);
 }
 
 div#contDescricao {
@@ -119,9 +121,15 @@ footer {
     bottom: 0;
     width: 100%;
     background-color: var(--cor3);
-    padding: 5px 40px;
+    padding: 0 40px;
+    user-select: none;
 }
 
-footer > img {
-    display: inline;
+footer p {
+    font-size: 1.3em;
+}
+
+footer img {
+    height: 20px;
+    margin: 2px 5px 0;
 }
