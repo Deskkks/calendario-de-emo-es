@@ -51,8 +51,46 @@ div#calendario {
 }
 
 #head {
+    position: relative;
     margin: 20px 0;
     font-size: 1.5em;
+}
+
+button {
+    position: absolute;
+    border: 1px black solid;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--cor5);
+}
+
+#btn_prev{
+    left: 180px;
+}
+
+#btn_prox{
+    right: 180px;
+}
+
+i {
+    content: '';
+    border: solid rgb(69, 11, 69);
+    border-width: 0 6px 6px 0;
+    padding: 5px;
+    display: inline-block;
+}
+
+.esq {
+    transform: rotate(135deg);
+}
+
+.dir {
+    transform: rotate(-45deg);
 }
 
 #dia-da-semana, #dias {
