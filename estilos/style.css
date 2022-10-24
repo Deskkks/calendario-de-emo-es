@@ -39,7 +39,7 @@ div#conteiner {
     grid-template-columns: 2fr 1fr;
 }
 
-div#calendario {
+div#contCalendario {
     width: 600px;
     height: 550px;
     margin: 10px;
@@ -55,6 +55,7 @@ div#calendario {
     margin: 20px 0;
     font-size: 1.5em;
 }
+
 
 button {
     position: absolute;
@@ -98,6 +99,61 @@ div#head > span:hover {
     padding: 3px;
     border-radius: 20px;
     background-color: var(--cor5);
+}
+
+#displayAno {
+    display: none;
+}
+
+#tituloAno {
+    margin: 20px 0 0;
+    font-size: 1.5em;
+}
+
+#displayAno {
+    display: none;
+    grid-template-columns: repeat(4,1fr);
+    margin: 50px 10px 0;
+}
+
+#displayAno > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    height: 125px;
+    width: 125px;
+    margin: 5px auto;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+#displayAno > div:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#displayMes {
+    display: none;
+    grid-template-columns: repeat(4,1fr);
+    margin: 50px 10px 0;
+}
+
+#displayMes > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    height: 125px;
+    width: 125px;
+    margin: 5px auto;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+#displayMes > div:hover {
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #dia-da-semana, #dias {
