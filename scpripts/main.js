@@ -7,6 +7,9 @@ function colocarDias(mes, ano) {
   document.querySelector('span#mes').innerHTML = mesBr[mes]
   document.querySelector('span#ano').innerHTML = ano
 
+  primeiroDia = new Date(ano, mes, 1).getDay() -1
+  let ultimoDia = new Date(ano, mes + 1, 0).getDate()
+
   console.log(primeiroDia);
 
   for(i = -primeiroDia, index = 0; i < (42-primeiroDia); i++, index++){
@@ -29,12 +32,9 @@ let mes = agora.getMonth()
 let ano = agora.getFullYear()
 let hoje = agora.getDate()
 
-let primeiroDia = new Date(ano, mes, 1).getDay() -1
-let ultimoDia = new Date(ano, mes + 1, 0).getDate()
-
-console.log(divsDia[hoje+ primeiroDia]);
-
 colocarDias(mes, ano)
+
+var primeiroDia = new Date(ano, mes, 1).getDay() -1
 
 const botao_ante = document.querySelector('#btn_prev')
 const botao_prox = document.querySelector('#btn_prox')
@@ -57,11 +57,65 @@ botao_ante.onclick = function(){
   colocarDias(mes, ano)
 }
 
-const cores = document.querySelectorAll('.checkmark')
 
-cores.forEach(cor => cor.addEventListener ('click', () => {
-  var color = window.getComputedStyle(cor)
-  if(divsDia[hoje + primeiroDia].style.backgroundColor == ''){
-    divsDia[hoje + primeiroDia].style.backgroundColor = color.backgroundColor
-  }
+//=========================================
+
+
+const cores = document.querySelectorAll('.checkmark')
+var divHoje = divsDia[hoje + primeiroDia] 
+
+cores.forEach(cor => cor.addEventListener ('click', () => { 
+
+  mudarOpcaidadeSpan(cor)
+  mudarCorHoje(cor)
 }))
+
+cores.forEach(cor => cor.addEventListener('mouseenter', () => {
+
+  if(cor.style.opacity == '0.5'){
+    cor.style.opacity = '0.7'
+  }
+
+}))
+
+cores.forEach(cor => cor.addEventListener('mouseout', () => {
+
+  if(cor.style.opacity == '0.7'){
+    cor.style.opacity = '0.5'
+  }
+
+}))
+
+function mudarOpcaidadeSpan(cor){
+
+  if(cor.style.opacity == '1'){
+    cor.style.opacity = '0.5'
+  }else {
+    cores.forEach(cor => cor.style.opacity = '0.5')
+    cor.style.opacity = '1'
+  }
+  
+}
+
+function mudarCorHoje(cor){
+  var color = window.getComputedStyle(cor)
+
+  if(cor.style.opacity == '0.5') {
+    divHoje.style.backgroundColor = 'white'
+    divHoje.style.color = 'black'
+  } else {
+    
+    divHoje.style.backgroundColor = color.backgroundColor
+    divHoje.style.opacity = '0.7'
+
+    if (
+      divHoje.style.backgroundColor == 'rgb(85, 255, 0)' ||
+      divHoje.style.backgroundColor == 'rgb(225, 255, 0)' ||
+      divHoje.style.backgroundColor == 'rgb(255, 136, 0)'
+    ) {
+      divHoje.style.color = 'black'
+    }else {
+      divHoje.style.color = 'white'
+    }
+  }
+}

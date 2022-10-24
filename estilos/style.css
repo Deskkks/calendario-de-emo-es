@@ -93,6 +93,13 @@ i {
     transform: rotate(-45deg);
 }
 
+div#head > span:hover {
+    cursor: pointer;
+    padding: 3px;
+    border-radius: 20px;
+    background-color: var(--cor5);
+}
+
 #dia-da-semana, #dias {
     display: grid;
     grid-template-columns: repeat(7,1fr);
