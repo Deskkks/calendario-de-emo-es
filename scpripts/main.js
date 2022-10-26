@@ -1,38 +1,37 @@
 const mesBr = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
-const dias = document.querySelector('#dias')
-const contDias = document.querySelector('div#calendario')
-const contano = document.querySelector('div#displayAno')
-const contmes = document.querySelector('div#displayMes')
-var divsDia = dias.getElementsByTagName('div')
-var agora = new Date
-
-const botao_ante = document.querySelector('#btn_prev')
-const botao_prox = document.querySelector('#btn_prox')
-
-const btn_mes = document.querySelector('span#mes')
-const btn_ano = document.querySelector('span#ano')
-
 const cores = document.querySelectorAll('.checkmark')
-var primeiroDia
 
 let display = {}
+var primeiroDia
+var agora = new Date()
 
-const disCalendario = {
+
+var globais = {
   mes : agora.getMonth(),
   ano : agora.getFullYear(),
   hoje : agora.getDate(),
+  dias : document.querySelector('#dias'),
+  contDias : document.querySelector('div#calendario'),
+  contano : document.querySelector('div#displayAno'),
+  contmes : document.querySelector('div#displayMes'),
+  divsDia : dias.getElementsByTagName('div'),
+  botao_ante : document.querySelector('#btn_prev'),
+  botao_prox : document.querySelector('#btn_prox'),
+  btn_mes : document.querySelector('span#mes'),
+  btn_ano : document.querySelector('span#ano')
+}
 
+const disCalendario = {
   colocar(mes, ano) {
     document.querySelector('span#mes').innerHTML = mesBr[mes]
     document.querySelector('span#ano').innerHTML = ano
 
     let ultimoDia = new Date(ano, mes + 1, 0).getDate()
     primeiroDia = new Date(ano, mes, 1).getDay() -1
-    console.log(ano, mes);
 
     for(i = -primeiroDia, index = 0; i < (42-primeiroDia); i++, index++){
       let dt = new Date(ano, mes, i)
-      var diaCalendario = divsDia[index]
+      var diaCalendario = globais.divsDia[index]
       diaCalendario.classList.remove('outroMes')
       diaCalendario.innerHTML = dt.getDate()
 
@@ -45,33 +44,33 @@ const disCalendario = {
     }
   },
   clickProx(){
-    disCalendario.mes++
-    if(disCalendario.mes > 11){
-      disCalendario.mes = 0
-      disCalendario.ano++
+    globais.mes++
+    if(globais.mes > 11){
+      globais.mes = 0
+      globais.ano++
     }
-    display.colocar(disCalendario.mes, disCalendario.ano)
+    display.colocar(globais.mes, globais.ano)
   },
   clickAnte(){
-    disCalendario.mes--
-    if(disCalendario.mes < 0){
-      disCalendario.mes = 11
-      disCalendario.ano--
+    globais.mes--
+    if(globais.mes < 0){
+      globais.mes = 11
+      globais.ano--
     }
-    display.colocar(disCalendario.mes, disCalendario.ano)
+    display.colocar(globais.mes, globais.ano)
   },
   clickMes() {
-    contDias.style.display = 'none'
-    contmes.style.display = 'grid'
-    btn_mes.innerHTML = 'Meses'
+    globais.contDias.style.display = 'none'
+    globais.contmes.style.display = 'grid'
+    globais.btn_mes.innerHTML = 'Meses'
     mudarTela(disMes)
     display.colocar()
   },
   clickAno() {
-    contDias.style.display = 'none'
-    contano.style.display = 'grid'
-    btn_ano.innerHTML = 'Anos'
-    btn_mes.innerHTML = ''
+    globais.contDias.style.display = 'none'
+    globais.contano.style.display = 'grid'
+    globais.btn_ano.innerHTML = 'Anos'
+    globais.btn_mes.innerHTML = ''
     mudarTela(disAno)
     display.colocar()
   }
@@ -79,33 +78,32 @@ const disCalendario = {
 
 const disMes = {
   colocar() {
-    var divsMes = contmes.getElementsByTagName('div')
+    var divsMes = globais.contmes.getElementsByTagName('div')
     for(i = 0; i < 12; i++){
       divsMes[i].innerHTML = mesBr[i]
     }
   },
   clickProx(){
-    disCalendario.ano++
-    btn_ano.innerHTML = disCalendario.ano
+    globais.ano++
+    globais.btn_ano.innerHTML = globais.ano
   },
   clickAnte(){
-    disCalendario.ano--
-    btn_ano.innerHTML = disCalendario.ano
+    globais.ano--
+    globais.btn_ano.innerHTML = globais.ano
   },
   clickMes(){
-    contDias.style.display = 'block'
-    contmes.style.display = 'none'
-    btn_ano.innerHTML = disCalendario.ano
-    btn_mes.innerHTML = mesBr[disCalendario.mes]
+    globais.contDias.style.display = 'block'
+    globais.contmes.style.display = 'none'
+    globais.btn_ano.innerHTML = globais.ano
+    globais.btn_mes.innerHTML = mesBr[globais.mes]
     mudarTela(disCalendario)
-    display.colocar(disCalendario.mes, disCalendario.ano) 
+    display.colocar(globais.mes, globais.ano) 
   }
 }
 
 const disAno = {
   colocar() {
-    console.log(display);
-  var divsAno = contano.getElementsByTagName('div')
+    var divsAno = globais.contano.getElementsByTagName('div')
     for(i = 0; i < 12; i++){
       divsAno[i].innerHTML = anoD
       anoD++
@@ -127,49 +125,33 @@ const disAno = {
     }
   },
   clickAno(){
-    contDias.style.display = 'block'
-    contano.style.display = 'none'
-    btn_ano.innerHTML = disCalendario.ano
-    btn_mes.innerHTML = mesBr[disCalendario.mes]
+    globais.contDias.style.display = 'block'
+    globais.contano.style.display = 'none'
+    globais.btn_ano.innerHTML = globais.ano
+    globais.btn_mes.innerHTML = mesBr[globais.mes]
     mudarTela(disCalendario)
-    display.colocar(disCalendario.mes, disCalendario.ano)
+    display.colocar(globais.mes, globais.ano)
   }
 }
 
 mudarTela(disCalendario)
 
-display.colocar(disCalendario.mes, disCalendario.ano)
-let anoD = disCalendario.ano
+display.colocar(globais.mes, globais.ano)
+let anoD = globais.ano
 
 
 function mudarTela(novaTela){
   display = novaTela
 }
 
-botao_prox.addEventListener('click', () => {
-  display.clickProx()
-})
-
-botao_ante.addEventListener('click', () => {
-  display.clickAnte()
-})
-
-btn_mes.addEventListener('click', () => {
-  display.clickMes()
-}) 
-
-btn_ano.addEventListener('click', () => {
-  display.clickAno()
-}) 
-
 const funCor = {
   mudarCorHoje(cor){
     var color = window.getComputedStyle(cor)
     var mesA = agora.getMonth() 
-    var divHoje = divsDia[disCalendario.hoje + primeiroDia]
+    var divHoje = globais.divsDia[globais.hoje + primeiroDia]
     
   
-    if(disCalendario.mes != mesA){
+    if(globais.mes != mesA){
       divHoje.style.backgroundColor = 'white'
       divHoje.style.color = 'black'
       divHoje.style.opacity = '1'
@@ -230,3 +212,19 @@ cores.forEach(cor => cor.addEventListener('mouseout', () => {
 
   funCor.spanOut(cor)
 }))
+
+globais.botao_prox.addEventListener('click', () => {
+  display.clickProx()
+})
+
+globais.botao_ante.addEventListener('click', () => {
+  display.clickAnte()
+})
+
+globais.btn_mes.addEventListener('click', () => {
+  display.clickMes()
+}) 
+
+globais.btn_ano.addEventListener('click', () => {
+  display.clickAno()
+}) 
