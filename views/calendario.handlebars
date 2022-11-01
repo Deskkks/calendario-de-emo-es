@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="estilos/style.css">
-  <link rel="stylesheet" href="estilos/checkbox.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-  <title>Calendario</title>
-</head>
-<body>
   <header>
     <h1>Calendario de emoções</h1>
     <div id="btn_calen"><span class="material-symbols-outlined">menu</span></div>
@@ -106,45 +94,47 @@
           <div></div>
           <div></div>
         </div>
-      </div>
+    </div>
       
-      <div id="contDescricao">
-        <div id="descricao">
-          <div id="contcheck">
+    <div id="contDescricao">
+      <div id="descricao">
+        <div id="contcheck">
+          <form action="/save" method="post">
             <div id="check">
               <label for="dPodre" class="conteiner_check">
-                <input type="radio" name="dia" id="dPodre">
+                <input type="radio" name="dia" id="dPodre" value="podre">
                 <span class="checkmark" id="podre"></span>
               </label>
               <label for="dPessimo" class="conteiner_check">
-                <input type="radio" name="dia" id="dPessimo">
+                <input type="radio" name="dia" id="dPessimo" value="pessimo">
                 <span class="checkmark" id="pessimo"></span>
               </label>
               <label for="dRuim" class="conteiner_check">
-                <input type="radio" name="dia" id="dRuim">
+                <input type="radio" name="dia" id="dRuim" value="ruim">
                 <span class="checkmark" id="ruim"></span>
               </label>
               <label for="dMediano" class="conteiner_check">
-                <input type="radio" name="dia" id="dMediano">
+                <input type="radio" name="dia" id="dMediano" value="neutro">
                 <span class="checkmark" id="mediano"></span>
               </label>
               <label for="dBom" class="conteiner_check">
-                <input type="radio" name="dia" id="dBom">
+                <input type="radio" name="dia" id="dBom" value="bom">
                 <span class="checkmark" id="bom"></span>
               </label>
               <label for="dIncrivel" class="conteiner_check">
-                <input type="radio" name="dia" id="dIncrivel">
+                <input type="radio" name="dia" id="dIncrivel" value="incrivel">
                 <span class="checkmark" id="incrivel"></span>
               </label>
               <label for="dPerfeito" class="conteiner_check">
-                <input type="radio" name="dia" id="dPerfeito">
+                <input type="radio" name="dia" id="dPerfeito" value="perfeito">
                 <span class="checkmark" id="perfeito"></span>
               </label>
             </div>
-          </div>
-          <div id="contText">
-            <textarea name="" id="" cols="30" rows="10" placeholder="descreva seu dia"></textarea>
-          </div>
+            <div id="contText">
+              <textarea name="descricao" id="descricao" cols="30" rows="10" placeholder="descreva seu dia"></textarea>
+            </div>
+            <button type="submit">Salvar</button>
+          </form>
         </div>
       </div>
     </div>
@@ -153,11 +143,7 @@
     <div id="social">
       <p>
         Social:
-      <a href=""><img src="imagens/insta.png" alt="Instagram"></a>
       <a href=""><img src="imagens/tiktok.png" alt="TikTok"></a>
       </p>
     </div>
   </footer>
-</body>
-<script src="scpripts/main.js"></script>
-</html>
