@@ -193,6 +193,11 @@ const funCor = {
     if(cor.style.opacity === '0.7'){
       cor.style.opacity = '0.5'
     }
+  },
+  async mudarCorBD() {
+    const data = await pegarApi()
+
+    console.log(data);
   }
 }
 
@@ -261,3 +266,11 @@ let anoD
 mudarTela(disCalendario)
 
 display.colocar(globais.mes, globais.ano)
+
+async function pegarApi(){
+  const response = (await fetch('http://localhost:8081/api/classificacao'))
+  const data = await response.json()
+
+  return data
+}
+funCor.mudarCorBD()

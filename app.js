@@ -2,7 +2,7 @@ const express = require('express')
 const hbs = require('express-handlebars')
 const app = express()
 const path = require('path')
-const home = require('./routes/home')
+const api = require('./routes/api')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 require('./models/classificacao')
@@ -19,7 +19,7 @@ app.engine('handlebars', hbs.engine({
   extname: 'hbs',
   defaultLayout: 'main',
   layoutsDir: __dirname + '/views/layouts',
-  partialsDir: path.join(__dirname + 'views/partials')
+  partialsDir: __dirname + '/views/partials'
 }))
 app.set('view engine', 'handlebars')
 
@@ -59,6 +59,8 @@ app.post('/save', (req, res) => {
     res.redirect('/')
   })
 })
+
+app.use('/api', api)
 
 //outros
 
