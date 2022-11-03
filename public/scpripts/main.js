@@ -1,9 +1,19 @@
 const mesBr = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
-const cores = document.querySelectorAll('.checkmark')
+const spans = document.querySelectorAll('.checkmark')
 
 let display = {}
 var primeiroDia
 var agora = new Date()
+
+const cores = {
+  perfeito: 'rgb(255, 0, 153)',
+  incrivel: 'rgb(0, 98, 255)',
+  bom: 'rgb(85, 255, 0)',
+  neutro: 'rgb(225, 255, 0)',
+  ruim: 'rgb(255, 136, 0)',
+  pessimo: 'rgb(139, 0, 0)',
+  podre: 'rgb(0, 0, 0)'
+}
 
 var globais = {
   mes : agora.getMonth(),
@@ -25,6 +35,7 @@ var globais = {
 const disCalendario = {
   colocar(mes, ano) {
     funCor.mudarCorHoje()
+    funCor.mudarCorBD()
 
     document.querySelector('span#mes').innerHTML = mesBr[mes]
     document.querySelector('span#ano').innerHTML = ano
@@ -148,8 +159,6 @@ const funCor = {
     var anoA = agora.getFullYear()
     primeiroDia = new Date(anoA, mesA, 1).getDay() -1
     var divHoje = globais.divsDia[globais.hoje + primeiroDia]
-    console.log(divHoje);
-    console.log(cor);
   
     if(globais.mes != mesA || globais.ano != anoA || cor == undefined){
       divHoje.style.backgroundColor = 'white'
@@ -179,7 +188,7 @@ const funCor = {
     if(cor.style.opacity == '1'){
       cor.style.opacity = '0.5'
     } else{
-      cores.forEach(cor => cor.style.opacity = '0.5')
+      spans.forEach(cor => cor.style.opacity = '0.5')
       cor.style.opacity = '1'
     }
   },
@@ -193,28 +202,41 @@ const funCor = {
     if(cor.style.opacity === '0.7'){
       cor.style.opacity = '0.5'
     }
+    this.mudarCorBD()
   },
   async mudarCorBD() {
     const data = await pegarApi()
-
-    console.log(data);
+    
+    for (i = 0; i < data.length; i++) {
+      var data1 = new Date(data[i].data).getDate()
+      var mes1 = new Date(data[i].data).getMonth()
+      for(index = 0; index < globais.divsDia.length; index++) {
+        if(globais.divsDia[index].textContent == data1 && globais.divsDia[index].classList != 'outroMes' && globais.btn_mes.textContent == mesBr[mes1]){
+          globais.divsDia[index].style.backgroundColor = cores[data[i].classe]
+          globais.divsDia[index].style.opacity = '0.7'
+        }else if(globais.btn_mes.textContent != mesBr[mes1]) {
+          globais.divsDia[index].style.backgroundColor = 'white'
+          globais.divsDia[index].style.opacity = '1'
+        }
+      }
+    }
   }
 }
 
-cores.forEach(cor => cor.style.opacity = '0.5')
+spans.forEach(cor => cor.style.opacity = '0.5')
 
-cores.forEach(cor => cor.addEventListener ('click', () => { 
+spans.forEach(cor => cor.addEventListener ('click', () => { 
 
   funCor.spanClick(cor)
   funCor.mudarCorHoje(cor)
 }))
 
-cores.forEach(cor => cor.addEventListener('mouseenter', () => {
+spans.forEach(cor => cor.addEventListener('mouseenter', () => {
 
   funCor.spanEnter(cor)
 }))
 
-cores.forEach(cor => cor.addEventListener('mouseout', () => {
+spans.forEach(cor => cor.addEventListener('mouseout', () => {
 
   funCor.spanOut(cor)
 }))
@@ -273,4 +295,3 @@ async function pegarApi(){
 
   return data
 }
-funCor.mudarCorBD()

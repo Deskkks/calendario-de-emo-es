@@ -5,8 +5,22 @@ const path = require('path')
 const api = require('./routes/api')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const session = require('express-session')
 require('./models/classificacao')
 const Classificacao = mongoose.model('classificacao')
+const passport = require('passport')
+require('./models/usuarios')
+const Usuario = mongoose.model('usuarios')
+const bcrypt = require('bcrypt')
+
+app.use(session({
+  secret: 'test',
+  resave: true,
+  saveUninitialized: true
+}))
+
+app.use(passport.initialize())
+app.use(passport.session())
 
 //body parser
 
@@ -57,6 +71,35 @@ app.post('/save', (req, res) => {
   .catch((err) => {
     console.log('erro: ' + err);
     res.redirect('/')
+  })
+})
+
+app.get('/login', (req, res) => {
+  res.render('login')
+})
+
+app.post('/login', (req, res) => {
+  const novoUser = new Usuario ({
+    nome: req.body.nome,
+    email: req.body.email,
+    senha: req.body.senha
+  })
+
+  bcrypt.genSalt(10, (err, salt) => {
+    bcrypt.hash(novoUser.senha, salt, (erro, hash) => {
+
+
+      novoUser.senha = hash
+
+      novoUser.save()
+      .then(() => {
+        res.redirect('/')
+      })
+      .catch((err) => {
+        console.log('erro: ' + err);
+        res.redirect('/')
+      })
+    })
   })
 })
 
