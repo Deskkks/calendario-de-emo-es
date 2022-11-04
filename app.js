@@ -1,17 +1,20 @@
 const express = require('express')
-const hbs = require('express-handlebars')
 const app = express()
+const session = require('express-session')
+const hbs = require('express-handlebars')
 const path = require('path')
-const api = require('./routes/api')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
-const session = require('express-session')
+const passport = require('passport')
+require('./config/auth')(passport)
 require('./models/classificacao')
 const Classificacao = mongoose.model('classificacao')
-const passport = require('passport')
 require('./models/usuarios')
-const Usuario = mongoose.model('usuarios')
-const bcrypt = require('bcrypt')
+const api = require('./routes/api')
+const usuario = require('./routes/usuarios')
+const {logado} = require('./helpers/logado')
+
+//sessão
 
 app.use(session({
   secret: 'test',
@@ -21,6 +24,11 @@ app.use(session({
 
 app.use(passport.initialize())
 app.use(passport.session())
+
+app.use((req, res, next) => {
+  res.locals.user = req.user || null
+  next()
+})
 
 //body parser
 
@@ -58,7 +66,7 @@ app.get('/', (req, res) => {
   res.render('calendario')
 })
 
-app.post('/save', (req, res) => {
+app.post('/save', logado, (req, res) => {
   const novaClasse = {
     classe: req.body.dia,
     descricao: req.body.descricao
@@ -74,36 +82,8 @@ app.post('/save', (req, res) => {
   })
 })
 
-app.get('/login', (req, res) => {
-  res.render('login')
-})
-
-app.post('/login', (req, res) => {
-  const novoUser = new Usuario ({
-    nome: req.body.nome,
-    email: req.body.email,
-    senha: req.body.senha
-  })
-
-  bcrypt.genSalt(10, (err, salt) => {
-    bcrypt.hash(novoUser.senha, salt, (erro, hash) => {
-
-
-      novoUser.senha = hash
-
-      novoUser.save()
-      .then(() => {
-        res.redirect('/')
-      })
-      .catch((err) => {
-        console.log('erro: ' + err);
-        res.redirect('/')
-      })
-    })
-  })
-})
-
 app.use('/api', api)
+app.use('', usuario)
 
 //outros
 

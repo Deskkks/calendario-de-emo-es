@@ -1,136 +1,134 @@
-  <main>
-    <div id="conteiner">
-      <div id="contCalendario">
-        <div id="head">
-          <button id="btn_prev"><i class="esq"></i></button>
-          <span id="mes"></span> <span id="ano"></span>
-          <button id="btn_prox"><i class="dir"></i></button>
-        </div>
-        <div id="calendario">
-            <div id="dia-da-semana">
-              <div>Dom</div>
-              <div>Seg</div>
-              <div>Ter</div>
-              <div>Qua</div>
-              <div>Qui</div>
-              <div>Sex</div>
-              <div>Sab</div>
-            </div>
-            <div id="dias">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-          </div>
-        </div>
-        <div id="displayAno">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <div id="displayMes">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-    </div>
-      
-    <div id="contDescricao">
-      <div id="descricao">
-        <div id="contcheck">
-          <form action="/save" method="post">
-            <div id="check">
-              <label for="dPodre" class="conteiner_check">
-                <input type="radio" name="dia" id="dPodre" value="podre">
-                <span class="checkmark" id="podre"></span>
-              </label>
-              <label for="dPessimo" class="conteiner_check">
-                <input type="radio" name="dia" id="dPessimo" value="pessimo">
-                <span class="checkmark" id="pessimo"></span>
-              </label>
-              <label for="dRuim" class="conteiner_check">
-                <input type="radio" name="dia" id="dRuim" value="ruim">
-                <span class="checkmark" id="ruim"></span>
-              </label>
-              <label for="dMediano" class="conteiner_check">
-                <input type="radio" name="dia" id="dMediano" value="neutro">
-                <span class="checkmark" id="mediano"></span>
-              </label>
-              <label for="dBom" class="conteiner_check">
-                <input type="radio" name="dia" id="dBom" value="bom">
-                <span class="checkmark" id="bom"></span>
-              </label>
-              <label for="dIncrivel" class="conteiner_check">
-                <input type="radio" name="dia" id="dIncrivel" value="incrivel">
-                <span class="checkmark" id="incrivel"></span>
-              </label>
-              <label for="dPerfeito" class="conteiner_check">
-                <input type="radio" name="dia" id="dPerfeito" value="perfeito">
-                <span class="checkmark" id="perfeito"></span>
-              </label>
-            </div>
-            <div id="contText">
-              <textarea name="descricao" id="descricao" cols="30" rows="10" placeholder="descreva seu dia"></textarea>
-            </div>
-            <button type="submit">Salvar</button>
-          </form>
-        </div>
+<main>
+  <div class="conteiner">
+    <div id="calendario">
+      <div class="cabeçalho-calendario">
+        <button class="btn" id="btn_prev"><i class="esq"></i></button>
+        <div><span id="mes"></span> <span id="ano"></span></div>
+        <button class="btn" id="btn_prox"><i class="dir"></i></button>
+      </div>
+      <div id="dia-da-semana">
+        <div>Dom</div>
+        <div>Seg</div>
+        <div>Ter</div>
+        <div>Qua</div>
+        <div>Qui</div>
+        <div>Sex</div>
+        <div>Sab</div>
+      </div>
+      <div id="dias">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div id="displayAno">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div id="displayMes">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
     </div>
-  </main>
+    
+    <div id="descricao">
+      <form action="/save" method="post">
+        <div id="conteiner-form">
+          <div class="conteiner-check">
+            <div>
+              <input type="radio" name="dia" id="dPodre" value="podre">
+              <span class="checkmark" id="podre"></span>
+            </div>
+            <div>
+              <input type="radio" name="dia" id="dPessimo" value="pessimo">
+              <span class="checkmark" id="pessimo"></span>
+            </div>
+            <div>
+              <input type="radio" name="dia" id="dRuim" value="ruim">
+              <span class="checkmark" id="ruim"></span>
+            </div>
+            <div>
+              <input type="radio" name="dia" id="dMediano" value="neutro">
+              <span class="checkmark" id="mediano"></span>
+            </div>
+            <div>
+              <input type="radio" name="dia" id="dBom" value="bom">
+              <span class="checkmark" id="bom"></span>
+            </div>
+            <div>
+              <input type="radio" name="dia" id="dIncrivel" value="incrivel">
+              <span class="checkmark" id="incrivel"></span>
+            </div>
+            <div>
+              <input type="radio" name="dia" id="dPerfeito" value="perfeito">
+              <span class="checkmark" id="perfeito"></span>
+            </div>
+          </div>
+          <div id="text">
+            <textarea name="descricao" id="descricao" cols="30" rows="10" placeholder="descreva seu dia"></textarea>
+          </div>
+          <button type="submit">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+<link rel="stylesheet" href="estilos/style.css">

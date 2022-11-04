@@ -2,7 +2,7 @@ const localStrategy = require('passport-local').Strategy
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 
-require('../models/usuario')
+require('../models/usuarios')
 const Usuario = mongoose.model('usuarios')
 
 module.exports = function(passport){
