@@ -29,7 +29,7 @@ var globais = {
   botao_prox : document.querySelector('#btn_prox'),
   btn_mes : document.querySelector('span#mes'),
   btn_ano : document.querySelector('span#ano'),
-  btn_menu : document.querySelector('div#btn_calen')
+  btn_menu : document.querySelector('div#btn-calen')
 }
 
 const disCalendario = {

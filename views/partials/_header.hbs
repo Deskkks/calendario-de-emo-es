@@ -1,10 +1,11 @@
   <header>
     <h1>Calendario de emoções</h1>
-    <div id="btn_calen"><span class="material-symbols-outlined">menu</span></div>
-    {{#if user}}
-       <a href="/logout">Sair</a>
-    {{else}}  
-      <a href="/login">Login</a>
-      <a href="/registro">Registrar</a>
-    {{/if}}
+    <div>
+      {{#if user}}
+        <a href="/logout">Sair</a>
+      {{else}}
+        <a href="/login">Login</a>
+        <a href="/registro">Registrar</a>
+      {{/if}}
+    </div>
   </header>

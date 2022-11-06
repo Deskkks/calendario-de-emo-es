@@ -1,0 +1,34 @@
+header {
+  display: flex;
+  padding: 10px 50px;
+  border-bottom: 1px black solid;
+  justify-content: space-between;
+}
+
+header > div {
+  display: flex;
+  align-items: center;
+}
+
+header a {
+  color: black;
+  text-decoration: none;
+  margin: 0 10px;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+header a:hover {
+  background-color: lightgrey;
+}
+
+footer {
+  position: relative;
+  padding: 5px 50px ;
+  bottom: 0;
+  background-color: #6B26FF;
+}
+
+img {
+  width: 25px;
+}
