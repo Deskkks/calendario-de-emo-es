@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-var agora = new Date
 
 const Classificacao = new Schema({
   classe: {
@@ -13,7 +12,10 @@ const Classificacao = new Schema({
   },
   data: {
     type: Date,
-    default: agora
+    required: true
+  },
+  usuario: {
+    type: Schema.
   }
 })
 

@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt')
 const passport = require('passport')
 
 router.get('/registro', (req, res) => {
-  res.render('registro')
+  res.render('../views/usuarios/registro')
 })
 
 router.post('/registro', (req, res) => {
@@ -36,7 +36,7 @@ router.post('/registro', (req, res) => {
 })
 
 router.get('/login', (req, res) => {
-  res.render('../views/login')
+  res.render('../views/usuarios/login')
 })
 
 router.post('/login', (req, res, next) => {
@@ -47,7 +47,9 @@ router.post('/login', (req, res, next) => {
 })
 
 router.get('/logout', (req, res) => {
-  req.logout()
+  req.logOut((err) => {
+    console.log(err);
+  })
   res.redirect('/')
 })
 

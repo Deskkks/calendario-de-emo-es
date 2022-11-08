@@ -7,58 +7,60 @@
         <div><span id="mes"></span> <span id="ano"></span></div>
         <button class="btn" id="btn_prox"><i class="dir"></i></button>
       </div>
-      <div id="dia-da-semana">
-        <div>Dom</div>
-        <div>Seg</div>
-        <div>Ter</div>
-        <div>Qua</div>
-        <div>Qui</div>
-        <div>Sex</div>
-        <div>Sab</div>
-      </div>
-      <div id="dias">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+      <div id="contCalendario">
+        <div id="dia-da-semana">
+          <div>Dom</div>
+          <div>Seg</div>
+          <div>Ter</div>
+          <div>Qua</div>
+          <div>Qui</div>
+          <div>Sex</div>
+          <div>Sab</div>
+        </div>
+        <div id="dias">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       </div>
       <div id="displayAno">
         <div></div>
@@ -94,38 +96,39 @@
       <form action="/save" method="post">
         <div id="conteiner-form">
           <div class="conteiner-check">
-            <div>
+            <label>
               <input type="radio" name="dia" id="dPodre" value="podre">
               <span class="checkmark" id="podre"></span>
-            </div>
-            <div>
+            </label>
+            <label>
               <input type="radio" name="dia" id="dPessimo" value="pessimo">
               <span class="checkmark" id="pessimo"></span>
-            </div>
-            <div>
+            </label>
+            <label>
               <input type="radio" name="dia" id="dRuim" value="ruim">
               <span class="checkmark" id="ruim"></span>
-            </div>
-            <div>
+            </label>
+            <label>
               <input type="radio" name="dia" id="dMediano" value="neutro">
               <span class="checkmark" id="mediano"></span>
-            </div>
-            <div>
+            </label>
+            <label>
               <input type="radio" name="dia" id="dBom" value="bom">
               <span class="checkmark" id="bom"></span>
-            </div>
-            <div>
+            </label>
+            <label>
               <input type="radio" name="dia" id="dIncrivel" value="incrivel">
               <span class="checkmark" id="incrivel"></span>
-            </div>
-            <div>
+            </label>
+            <label>
               <input type="radio" name="dia" id="dPerfeito" value="perfeito">
               <span class="checkmark" id="perfeito"></span>
-            </div>
+            </label>
           </div>
           <div id="text">
             <textarea name="descricao" id="descricao" cols="30" rows="10" placeholder="descreva seu dia"></textarea>
           </div>
+          <input type="hidden" name="data" id="data">
           <button type="submit">Salvar</button>
         </div>
       </form>

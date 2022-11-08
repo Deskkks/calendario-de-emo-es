@@ -66,20 +66,24 @@ app.get('/', (req, res) => {
   res.render('calendario')
 })
 
-app.post('/save', logado, (req, res) => {
+app.post('/save',  (req, res) => {
   const novaClasse = {
     classe: req.body.dia,
-    descricao: req.body.descricao
+    descricao: req.body.descricao,
+    data: req.body.data
   }
   
-  new Classificacao(novaClasse).save()
-  .then(() => {
-    res.redirect('/')
-  })
-  .catch((err) => {
-    console.log('erro: ' + err);
-    res.redirect('/')
-  })
+  Classificacao.findOneAndUpdate({data: novaClasse.data}, novaClasse)
+  .catch(
+    new Classificacao(novaClasse).save()
+    .then(() => {
+      res.redirect('/')
+    })
+    .catch((err) => {
+      console.log('erro: ' + err);
+      res.redirect('/')
+    })
+  )
 })
 
 app.use('/api', api)

@@ -4,6 +4,11 @@ const spans = document.querySelectorAll('.checkmark')
 let display = {}
 var primeiroDia
 var agora = new Date()
+var mes = agora.getMonth()
+var ano = agora.getFullYear()
+var hoje = agora.getDate()
+var mesA = agora.getMonth()
+var anoA = agora.getFullYear()
 
 const cores = {
   perfeito: 'rgb(255, 0, 153)',
@@ -15,37 +20,39 @@ const cores = {
   podre: 'rgb(0, 0, 0)'
 }
 
-var globais = {
-  mes : agora.getMonth(),
-  ano : agora.getFullYear(),
-  hoje : agora.getDate(),
-  dias : document.querySelector('#dias'),
-  contDias : document.querySelector('div#calendario'),
-  contCalen : document.querySelector('div#contCalendario'),
-  contano : document.querySelector('div#displayAno'),
-  contmes : document.querySelector('div#displayMes'),
-  divsDia : dias.getElementsByTagName('div'),
-  botao_ante : document.querySelector('#btn_prev'),
-  botao_prox : document.querySelector('#btn_prox'),
-  btn_mes : document.querySelector('span#mes'),
-  btn_ano : document.querySelector('span#ano'),
-  btn_menu : document.querySelector('div#btn-calen')
-}
+var divSelecionada
+
+var dias = document.querySelector('#dias')
+var contDias = document.querySelector('div#contCalendario')
+var contCalen = document.querySelector('div#calendario')
+var contano = document.querySelector('div#displayAno')
+var contmes = document.querySelector('div#displayMes')
+const divsDia = dias.querySelectorAll('div')
+var botao_ante = document.querySelector('#btn_prev')
+var botao_prox = document.querySelector('#btn_prox')
+var btn_mes = document.querySelector('span#mes')
+var btn_ano = document.querySelector('span#ano')
+var btn_menu = document.querySelector('div#btn-calen')
+const divsMes = contmes.querySelectorAll('div')
+const divsAno = contano.querySelectorAll('div')
+const inputData = document.querySelector('input#data')
+const textArea = document.querySelector('textarea')
+
+console.log(divsDia);
 
 const disCalendario = {
   colocar(mes, ano) {
-    funCor.mudarCorHoje()
     funCor.mudarCorBD()
 
-    document.querySelector('span#mes').innerHTML = mesBr[mes]
-    document.querySelector('span#ano').innerHTML = ano
+    btn_mes.innerHTML = mesBr[mes]
+    btn_ano.innerHTML = ano
 
     let ultimoDia = new Date(ano, mes + 1, 0).getDate()
     primeiroDia = new Date(ano, mes, 1).getDay() -1
 
     for(i = -primeiroDia, index = 0; i < (42-primeiroDia); i++, index++){
       let dt = new Date(ano, mes, i)
-      var diaCalendario = globais.divsDia[index]
+      var diaCalendario = divsDia[index]
       diaCalendario.classList.remove('outroMes')
       diaCalendario.innerHTML = dt.getDate()
 
@@ -55,36 +62,42 @@ const disCalendario = {
       if(i > ultimoDia){
         diaCalendario.classList.add('outroMes')
       }
+      if(dt.getDate() == hoje && mes == mesA && diaCalendario.classList != 'outroMes'){
+        diaCalendario.classList.add('selecionado')
+        inputData.value = new Date(ano, mes, diaCalendario.textContent)
+        diaCalendario.innerHTML += '<i></i>'
+        divSelecionada = diaCalendario
+      }
     }
   },
   clickProx(){
-    globais.mes++
-    if(globais.mes > 11){
-      globais.mes = 0
-      globais.ano++
+    mes++
+    if(mes > 11){
+      mes = 0
+      ano++
     }
-    display.colocar(globais.mes, globais.ano)
+    display.colocar(mes, ano)
   },
   clickAnte(){
-    globais.mes--
-    if(globais.mes < 0){
-      globais.mes = 11
-      globais.ano--
+    mes--
+    if(mes < 0){
+      mes = 11
+      ano--
     }
-    display.colocar(globais.mes, globais.ano)
+    display.colocar(mes, ano)
   },
   clickMes() {
-    globais.contDias.style.display = 'none'
-    globais.contmes.style.display = 'grid'
-    globais.btn_mes.innerHTML = 'Meses'
+    contDias.style.display = 'none'
+    contmes.style.display = 'grid'
+    btn_mes.innerHTML = 'Meses'
     mudarTela(disMes)
     display.colocar()
   },
   clickAno() {
-    globais.contDias.style.display = 'none'
-    globais.contano.style.display = 'grid'
-    globais.btn_ano.innerHTML = 'Anos'
-    globais.btn_mes.innerHTML = ''
+    contDias.style.display = 'none'
+    contano.style.display = 'grid'
+    btn_ano.innerHTML = 'Anos'
+    btn_mes.innerHTML = ''
     mudarTela(disAno)
     display.colocar()
   }
@@ -97,30 +110,26 @@ const disMes = {
     }
   },
   clickProx(){
-    globais.ano++
-    globais.btn_ano.innerHTML = globais.ano
+    ano++
+    btn_ano.innerHTML = ano
   },
   clickAnte(){
-    globais.ano--
-    globais.btn_ano.innerHTML = globais.ano
+    ano--
+    btn_ano.innerHTML = ano
   },
   clickMes(){
-    globais.contDias.style.display = 'block'
-    globais.contmes.style.display = 'none'
-    globais.btn_ano.innerHTML = globais.ano
-    globais.btn_mes.innerHTML = mesBr[globais.mes]
+    contDias.style.display = 'block'
+    contmes.style.display = 'none'
+    btn_ano.innerHTML = ano
+    btn_mes.innerHTML = mesBr[mes]
     mudarTela(disCalendario)
-    display.colocar(globais.mes, globais.ano) 
+    display.colocar(mes, ano) 
   },
 }
 
-const divsMes = globais.contmes.querySelectorAll('div')
-const divsAno = globais.contano.querySelectorAll('div')
-
-
 const disAno = {
   colocar() {
-    anoD = globais.ano
+    anoD = ano
     for(i = 0; i < 12; i++){
       divsAno[i].innerHTML = anoD
       anoD++
@@ -140,12 +149,12 @@ const disAno = {
     }
   },
   clickAno(){
-    globais.contDias.style.display = 'block'
-    globais.contano.style.display = 'none'
-    globais.btn_ano.innerHTML = globais.ano
-    globais.btn_mes.innerHTML = mesBr[globais.mes]
+    contDias.style.display = 'block'
+    contano.style.display = 'none'
+    btn_ano.innerHTML = ano
+    btn_mes.innerHTML = mesBr[mes]
     mudarTela(disCalendario)
-    display.colocar(globais.mes, globais.ano)
+    display.colocar(mes, ano)
   }
 }
 
@@ -154,32 +163,29 @@ function mudarTela(novaTela){
 }
 
 const funCor = {
-  mudarCorHoje(cor){
-    var mesA = agora.getMonth()
-    var anoA = agora.getFullYear()
+  mudarCorSelecionada(cor){
     primeiroDia = new Date(anoA, mesA, 1).getDay() -1
-    var divHoje = globais.divsDia[globais.hoje + primeiroDia]
   
-    if(globais.mes != mesA || globais.ano != anoA || cor == undefined){
-      divHoje.style.backgroundColor = 'white'
-      divHoje.style.color = 'black'
-      divHoje.style.opacity = '1'
+    if(mes != mesA || ano != anoA || cor == undefined){
+      divSelecionada.style.backgroundColor = 'white'
+      divSelecionada.style.color = 'black'
+      divSelecionada.style.opacity = '1'
     }else{
       var color = window.getComputedStyle(cor)
       if(cor.style.opacity == '0.5') {
-      divHoje.style.backgroundColor = 'white'
-      divHoje.style.color = 'black'
+      divSelecionada.style.backgroundColor = 'white'
+      divSelecionada.style.color = 'black'
       } else {
-        divHoje.style.backgroundColor = color.backgroundColor
-        divHoje.style.opacity = '0.7'
+        divSelecionada.style.backgroundColor = color.backgroundColor
+        divSelecionada.style.opacity = '0.7'
           if (
-            divHoje.style.backgroundColor == 'rgb(85, 255, 0)' ||
-            divHoje.style.backgroundColor == 'rgb(225, 255, 0)' ||
-            divHoje.style.backgroundColor == 'rgb(255, 136, 0)'
-            ) {
-            divHoje.style.color = 'black'
+            divSelecionada.style.backgroundColor == 'rgb(85, 255, 0)' ||
+            divSelecionada.style.backgroundColor == 'rgb(225, 255, 0)' ||
+            divSelecionada.style.backgroundColor == 'rgb(255, 136, 0)'
+          ) {
+            divSelecionada.style.color = 'black'
           }else {
-            divHoje.style.color = 'white'
+            divSelecionada.style.color = 'white'
           }
       }
     }
@@ -202,21 +208,19 @@ const funCor = {
     if(cor.style.opacity === '0.7'){
       cor.style.opacity = '0.5'
     }
-    this.mudarCorBD()
   },
   async mudarCorBD() {
     const data = await pegarApi()
-    
     for (i = 0; i < data.length; i++) {
       var data1 = new Date(data[i].data).getDate()
       var mes1 = new Date(data[i].data).getMonth()
-      for(index = 0; index < globais.divsDia.length; index++) {
-        if(globais.divsDia[index].textContent == data1 && globais.divsDia[index].classList != 'outroMes' && globais.btn_mes.textContent == mesBr[mes1]){
-          globais.divsDia[index].style.backgroundColor = cores[data[i].classe]
-          globais.divsDia[index].style.opacity = '0.7'
-        }else if(globais.btn_mes.textContent != mesBr[mes1]) {
-          globais.divsDia[index].style.backgroundColor = 'white'
-          globais.divsDia[index].style.opacity = '1'
+      for(index = 0; index < divsDia.length; index++) {
+        if(divsDia[index].textContent == data1 && divsDia[index].classList != 'outroMes' && btn_mes.textContent == mesBr[mes1]){
+          divsDia[index].style.backgroundColor = cores[data[i].classe]
+          divsDia[index].style.opacity = '0.7'
+        }else if(btn_mes.textContent != mesBr[mes1]) {
+          divsDia[index].style.backgroundColor = 'white'
+          divsDia[index].style.opacity = '1'
         }
       }
     }
@@ -226,9 +230,8 @@ const funCor = {
 spans.forEach(cor => cor.style.opacity = '0.5')
 
 spans.forEach(cor => cor.addEventListener ('click', () => { 
-
   funCor.spanClick(cor)
-  funCor.mudarCorHoje(cor)
+  funCor.mudarCorSelecionada(cor)
 }))
 
 spans.forEach(cor => cor.addEventListener('mouseenter', () => {
@@ -241,45 +244,67 @@ spans.forEach(cor => cor.addEventListener('mouseout', () => {
   funCor.spanOut(cor)
 }))
 
+divsDia.forEach(Ddia => Ddia.addEventListener('click', async () => {
+  const data = await pegarApi()
+  display.colocar(mes, ano)
+  if(Ddia.classList != 'outroMes' && Ddia.textContent != hoje){
+    divsDia.forEach(Ddia => {
+      if(Ddia.classList == 'selecionado') {
+        Ddia.classList.remove('selecionado')
+      }
+    })
+    Ddia.classList.add('selecionado')
+    inputData.value = new Date(ano, mes, Ddia.textContent)
+    Ddia.innerHTML += '<i></i>'
+    divSelecionada = Ddia
+    textArea.innerHTML = ''
+    for(i = 0; i < data.length; i++) {
+      if(new Date(data[i].data) == inputData.value) {
+        textArea.innerHTML = data[i].descricao
+      }
+    }
+  }
+}))
+
 divsMes.forEach(Dmes => Dmes.addEventListener('click', () => {
-  globais.mes = mesBr.indexOf(Dmes.textContent)
+  mes = mesBr.indexOf(Dmes.textContent)
   display.clickMes()
 }))
 
 divsAno.forEach(Dano => Dano.addEventListener('click', () => {
-  globais.ano = Number(Dano.textContent)
+  ano = Number(Dano.textContent)
   display.clickAno()
   display.clickMes()
 }))
 
-globais.botao_prox.addEventListener('click', () => {
+botao_prox.addEventListener('click', () => {
   display.clickProx()
 })
 
-globais.botao_ante.addEventListener('click', () => {
+botao_ante.addEventListener('click', () => {
   display.clickAnte()
 })
 
-globais.btn_mes.addEventListener('click', () => {
+btn_mes.addEventListener('click', () => {
   if(display.clickMes){
     display.clickMes()
   }
 }) 
 
-globais.btn_ano.addEventListener('click', () => {
+btn_ano.addEventListener('click', () => {
   if(display.clickAno){
     display.clickAno()
   }
 })
 
-globais.btn_menu.addEventListener('click', mudarDisplayCalendario)
+btn_menu.addEventListener('click', mudarDisplayCalendario)
 
 function mudarDisplayCalendario() {
-  var display = window.getComputedStyle(globais.contCalen)
+  var display = window.getComputedStyle(contCalen)
   if(display.display == 'block'){
-    globais.contCalen.style.display = 'none'
+    contCalen.style.display = 'none'
   }else {
-    globais.contCalen.style.display = 'block'
+    contCalen.style.display = 'block'
   }
 }
 
@@ -287,7 +312,7 @@ let anoD
 
 mudarTela(disCalendario)
 
-display.colocar(globais.mes, globais.ano)
+display.colocar(mes, ano)
 
 async function pegarApi(){
   const response = (await fetch('http://localhost:8081/api/classificacao'))
