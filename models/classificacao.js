@@ -15,7 +15,9 @@ const Classificacao = new Schema({
     required: true
   },
   usuario: {
-    type: Schema.
+    type: Schema.Types.ObjectId,
+    ref: 'usuarios',
+    required: true
   }
 })
 

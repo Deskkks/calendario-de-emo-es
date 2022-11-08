@@ -70,7 +70,8 @@ app.post('/save',  (req, res) => {
   const novaClasse = {
     classe: req.body.dia,
     descricao: req.body.descricao,
-    data: req.body.data
+    data: req.body.data,
+    usuario: req.user
   }
   
   Classificacao.findOneAndUpdate({data: novaClasse.data}, novaClasse)
