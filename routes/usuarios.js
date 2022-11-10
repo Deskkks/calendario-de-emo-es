@@ -5,12 +5,40 @@ require('../models/usuarios')
 const Usuario = mongoose.model('usuarios')
 const bcrypt = require('bcrypt')
 const passport = require('passport')
+const {body} = require('express-validator')
+const { validationResult } = require('express-validator');
 
 router.get('/registro', (req, res) => {
   res.render('../views/usuarios/registro')
 })
 
-router.post('/registro', (req, res) => {
+router.post('/registro',[
+  body('email').isEmail().withMessage("O e-mail precisa ser válido"),
+  body('email').custom(value => {
+    if (!value) {
+      return Promise.reject('E-mail é obrigatório');
+    }
+    if (value == "teste@teste.com") {
+      return Promise.reject('E-mail já cadastrado');
+    }
+    return true
+  }),
+  body('email'). custom(async email => {
+    Usuario.find({email: email}).then(user => {
+      if (user) {
+        return Promise.reject('E-mail já cadastrado');
+      }
+    }).catch(() =>{
+
+    });
+  }),
+  body('nome').isLength({ min: 2 }).withMessage("Campo precisa ter pelo menos 2 caracteres"),
+  body('senha').isLength({ min: 8 }).withMessage("Campo senha precisa ter pelo menos 8 caracteres"),
+], (req, res) => {
+  const errors = validationResult (req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
   const novoUser = new Usuario ({
     nome: req.body.nome,
     email: req.body.email,
@@ -19,8 +47,6 @@ router.post('/registro', (req, res) => {
 
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(novoUser.senha, salt, (erro, hash) => {
-
-
       novoUser.senha = hash
 
       novoUser.save()
@@ -29,7 +55,7 @@ router.post('/registro', (req, res) => {
       })
       .catch((err) => {
         console.log('erro: ' + err);
-        res.redirect('/')
+        res.redirect('/registro')
       })
     })
   })
@@ -48,7 +74,7 @@ router.post('/login', (req, res, next) => {
 
 router.get('/logout', (req, res) => {
   req.logOut((err) => {
-    console.log(err);
+    
   })
   res.redirect('/')
 })

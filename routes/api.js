@@ -5,7 +5,7 @@ require('../models/classificacao')
 const Classificacao = mongoose.model('classificacao')
 
 router.get('/classificacao', (req, res) => {
-  Classificacao.find()
+  Classificacao.find({usuario: req.user})
   .then((categoria) => {
       res.json(categoria)
   })

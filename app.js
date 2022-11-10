@@ -74,7 +74,7 @@ app.post('/save',  (req, res) => {
     usuario: req.user
   }
   
-  Classificacao.findOneAndUpdate({data: novaClasse.data}, novaClasse)
+  Classificacao.findOneAndUpdate({data: novaClasse.data, usuario: novaClasse.usuario}, novaClasse)
   .catch(
     new Classificacao(novaClasse).save()
     .then(() => {
@@ -92,7 +92,7 @@ app.use('', usuario)
 
 //outros
 
-const port = 8081
+const port = process.env.PORT || 8081
 app.listen(port, () => {
   console.log('servidor rodando');
 })

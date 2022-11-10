@@ -1,11 +1,18 @@
 <main>
 
   <form action="/login" method="post">
-    <label for="email">E-mail: </label>
-    <input type="text" name="email" id="email">
-    <label for="senha">Senha: </label>
-    <input type="password" name="senha" id="senha">
-    <button type="submit">Logar</button>
+    <div id="conteiner-form">
+      <div class="input">
+        <label for="email">E-mail: </label>
+        <input type="text" name="email" id="email">
+      </div>
+      <div class="input">
+        <label for="senha">Senha: </label>
+        <input type="password" name="senha" id="senha">
+      </div>
+      <button type="submit">Logar</button>
+    </div>
   </form>
+  <link rel="stylesheet" href="estilos/usuarios.css">
 
 </main>

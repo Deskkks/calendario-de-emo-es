@@ -247,6 +247,7 @@ spans.forEach(cor => cor.addEventListener('mouseout', () => {
 divsDia.forEach(Ddia => Ddia.addEventListener('click', async () => {
   const data = await pegarApi()
   display.colocar(mes, ano)
+  textArea.innerHTML = ''
   if(Ddia.classList != 'outroMes' && Ddia.textContent != hoje){
     divsDia.forEach(Ddia => {
       if(Ddia.classList == 'selecionado') {
@@ -257,7 +258,6 @@ divsDia.forEach(Ddia => Ddia.addEventListener('click', async () => {
     inputData.value = new Date(ano, mes, Ddia.textContent)
     Ddia.innerHTML += '<i></i>'
     divSelecionada = Ddia
-    textArea.innerHTML = ''
     for(i = 0; i < data.length; i++) {
       if(new Date(data[i].data) == inputData.value) {
         textArea.innerHTML = data[i].descricao

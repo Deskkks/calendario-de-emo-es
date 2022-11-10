@@ -1,0 +1,27 @@
+main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+}
+
+form {
+  height: 60%;
+}
+
+#conteiner-form{
+  padding: 30px;
+  border: 1px black solid;
+  border-radius: 20px;
+}
+
+.input {
+  margin: 10px;
+}
+
+input {
+  padding: 12px;
+  margin: 8px 0;
+  width: 100%;
+  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.472);
+}
