@@ -12,6 +12,10 @@
     box-sizing: border-box;
 }
 
+body{
+  height: 100vh;
+}
+
 main {
     margin: 20px auto;
     width: 80%;
@@ -242,7 +246,7 @@ span#perfeito {
     background-color: rgb(255, 0, 153);
 }
 
-#conteiner-form > button {
+button {
   border: 1px black solid;
   border-radius: 20px;
   background-color: var(--cor3);

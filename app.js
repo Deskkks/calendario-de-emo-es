@@ -48,7 +48,7 @@ app.set('view engine', 'handlebars')
 //mogoose
 
 mongoose.Promise = global.Promise
-mongoose.connect('mongodb://localhost/calendario')
+mongoose.connect('mongodb+srv://dev:MrhEmPWnD1a6YwW5@atlascluster.pkd6hnq.mongodb.net/test')
 .then(() => {
   console.log('canectado ao mongo')
 })
@@ -63,7 +63,7 @@ app.use(express.static(path.join(__dirname,'public')))
 //rotas
 
 app.get('/', (req, res) => {
-  res.render('calendario')
+  res.render('index')
 })
 
 app.post('/save',  (req, res) => {
