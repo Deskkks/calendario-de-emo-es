@@ -14,12 +14,28 @@
 
 body{
   height: 100vh;
+  background-color: var(--cor5);
+}
+
+header {
+  background-color: #fff;
 }
 
 main {
-    margin: 20px auto;
-    width: 80%;
-    height: 78.9vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin: 20px auto;
+  height: 78.9vh;
+}
+
+#main {
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 10px;
+  margin: 20px auto;
+  width: 80%;
 }
 
 #btn-calen {
@@ -97,7 +113,7 @@ main {
 
 #dia-da-semana > div{
   border: 1px solid rgb(0, 0, 0);
-  height: 30px;
+  height: 25px;
   width: 100%;
   text-align: center;
 }
@@ -129,7 +145,7 @@ main {
   display: none;
   grid-template-columns: repeat(4, 1fr);
   border: 1px solid rgb(0, 0, 0);
-  height: 100%;
+  height: 475px;
 }
 
 #displayMes > div {
@@ -152,7 +168,7 @@ main {
   display: none;
   grid-template-columns: repeat(4, 1fr);
   border: 1px solid rgb(0, 0, 0);
-  height: 100%;
+  height: 475px;
 }
 
 #displayAno > div {
@@ -173,7 +189,6 @@ main {
 
 #descricao {
   width: 30%;
-  height: 100%;
 }
 
 form {

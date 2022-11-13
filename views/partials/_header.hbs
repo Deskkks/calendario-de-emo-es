@@ -1,11 +1,19 @@
   <header>
-    <h1>Calendario de emoções</h1>
-    <div>
-      {{#if user}}
-        <a href="/logout">Sair</a>
-      {{else}}
-        <a href="/login">Login</a>
-        <a href="/registro">Registrar</a>
-      {{/if}}
-    </div>
+      <a href="/">
+        <h1>Calendario de emoções</h1>
+      </a>
+    <nav>
+      <div>
+        <a href="/calendario">Calendario</a>
+        <a href="/sobremim">Sobre mim</a>
+      </div>
+      <div id="login">
+        {{#if user}}
+          <a href="/logout">Sair</a>
+        {{else}}
+          <a href="/login">Login</a>
+          <a href="/registro">Registrar</a>
+        {{/if}}
+      </div>
+    </nav>
   </header>

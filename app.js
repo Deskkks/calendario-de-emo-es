@@ -87,6 +87,14 @@ app.post('/save',  (req, res) => {
   )
 })
 
+app.get('/sobreMim', (req, res) => {
+  res.render('sobremim')
+})
+
+app.get('/calendario', (req, res) => {
+  res.render('calendario')
+})
+
 app.use('/api', api)
 app.use('', usuario)
 
