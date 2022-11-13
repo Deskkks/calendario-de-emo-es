@@ -33,12 +33,10 @@ nav a:hover {
 }
 
 footer {
+  display: flex;
+  justify-content: space-between;
   position: relative;
   padding: 5px 50px ;
   bottom: 0;
   background-color: #6B26FF;
-}
-
-img {
-  width: 25px;
 }

@@ -14,6 +14,7 @@ form {
   padding: 30px;
   border: 1px black solid;
   border-radius: 20px;
+  height: 90%;
 }
 
 .input {
