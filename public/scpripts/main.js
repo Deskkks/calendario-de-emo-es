@@ -315,7 +315,7 @@ mudarTela(disCalendario)
 display.colocar(mes, ano)
 
 async function pegarApi(){
-  const response = (await fetch('http://localhost:8081/api/classificacao'))
+  const response = (await fetch('https://tranquil-lowlands-72809.herokuapp.com/calendario'))
   const data = await response.json()
 
   return data
