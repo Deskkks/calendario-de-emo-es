@@ -29,9 +29,5 @@
   "bugs": {
     "url": "https://github.com/Deskkks/calendario-de-emo-es/issues"
   },
-  "engines": {
-    "node": "0.10.41",
-    "npm": "1.4.29"
-  },
   "homepage": "https://github.com/Deskkks/calendario-de-emo-es#readme"
 }
