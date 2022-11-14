@@ -2,10 +2,11 @@
   background-color: #fff;
   border-radius: 20px;
   padding: 20px;
+  margin: 20px;
   height: 60%;
   display: flex;
   align-items: center;
-  width: 50%;
+  width: 40%;
 }
 
 #conteiner{

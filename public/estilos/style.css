@@ -273,3 +273,11 @@ button {
 .strong {
   font-weight: bolder;
 }
+
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  color: #fff;
+}

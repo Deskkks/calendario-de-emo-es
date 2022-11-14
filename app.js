@@ -87,7 +87,7 @@ app.post('/save',  (req, res) => {
   )
 })
 
-app.get('/sobreMim', (req, res) => {
+app.get('/sobre', (req, res) => {
   res.render('sobremim')
 })
 
