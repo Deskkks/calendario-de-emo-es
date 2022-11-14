@@ -100,7 +100,7 @@ app.use('', usuario)
 
 //outros
 
-const port = process.env.PORT || 8081
-app.listen(port, () => {
+const PORT = process.env.PORT || 8081
+app.listen(PORT, () => {
   console.log('servidor rodando');
 })
