@@ -66,7 +66,7 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
-app.post('/save',  (req, res) => {
+app.post('/save', logado , (req, res) => {
   const novaClasse = {
     classe: req.body.dia,
     descricao: req.body.descricao,
